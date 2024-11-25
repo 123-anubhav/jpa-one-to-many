@@ -1,0 +1,28 @@
+<configuration>
+
+	<!-- Console Appender -->
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d [%thread] %-5level %-50logger{40} - %msg%n</pattern>
+		</encoder>
+
+	</appender>
+	<appender name="RollingFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>JpaPractices.log</file>
+		<encoder>
+			<pattern>%d [%thread] %-5level %-50logger{40} - %msg%n</pattern>
+		</encoder>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>Jpa-Practice-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<maxFileSize>1GB</maxFileSize>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+	</appender>
+	<root level="INFO">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="RollingFile" />
+	</root>
+
+</configuration>
